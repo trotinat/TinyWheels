@@ -1,4 +1,4 @@
-package com.tinycompany.tinywheels.models;
+package com.tinycompany.tinywheels.agencyapi.models;
 
 import java.util.Date;
 
