@@ -9,14 +9,16 @@ public class Trajectory {
     private int id_driver;
     private Date pickup_date;
     private int id_client_account;
+    private String status;
 
-    public Trajectory(int id, int id_start_address, int id_destination_address, int id_driver, Date pickup_date, int id_client_account) {
+    public Trajectory(int id, int id_start_address, int id_destination_address, int id_driver, Date pickup_date, int id_client_account, String status) {
         this.id = id;
         this.id_start_address = id_start_address;
         this.id_destination_address = id_destination_address;
         this.id_driver = id_driver;
         this.pickup_date = pickup_date;
         this.id_client_account = id_client_account;
+        this.status = status;
     }
 
     public int getId() {
@@ -65,5 +67,13 @@ public class Trajectory {
 
     public void setId_client_account(int id_client_account) {
         this.id_client_account = id_client_account;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
