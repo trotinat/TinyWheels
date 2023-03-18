@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TinywheelsApplication {
+public class TinywheelsAgencyAPI {
 
     public static void main(String[] args) {
-        SpringApplication.run(TinywheelsApplication.class, args);
+        SpringApplication.run(TinywheelsAgencyAPI.class, args);
     }
 
 }
