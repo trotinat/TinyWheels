@@ -1,20 +1,38 @@
 package com.tinycompany.tinywheels.agencyapi.models;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.PersistenceConstructor;
+
+@Entity
+@Table(name="vehicule")
 public class Vehicule {
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "id", nullable = false)
    private int id;
+   @Column(nullable = false)
    private String brand;
+   @Column(nullable = false)
    private String model;
+   @Column(nullable = false)
    private int year;
+   @Column(nullable = false)
    private String type;
+   @Column(nullable = false)
    private String status;
 
-   public Vehicule(int id, String brand, String model, int year, String type, String status) {
-      this.id = id;
+
+   @PersistenceConstructor
+   public Vehicule( String brand, String model, int year, String type, String status) {
       this.brand = brand;
       this.model = model;
       this.year = year;
       this.type = type;
       this.status = status;
+   }
+
+   public Vehicule() {
+
    }
 
    public int getId() {

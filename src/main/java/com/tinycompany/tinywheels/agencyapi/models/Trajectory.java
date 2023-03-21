@@ -1,24 +1,49 @@
 package com.tinycompany.tinywheels.agencyapi.models;
 
-import java.util.Date;
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
+
+import java.util.Date;
+import java.util.List;
+
+
+@Entity
+@Table(name="trajectory")
 public class Trajectory {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private int id;
     private int id_start_address;
+    @Column(nullable = false)
     private int id_destination_address;
-    private int id_driver;
+    @Column(nullable = false)
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "driver_id", referencedColumnName = "id")
+    private List<Driver> id_driver;
+    @Column(nullable = false)
     private Date pickup_date;
+    @Column(nullable = false)
     private int id_client_account;
+    @Column(nullable = false)
     private String status;
 
-    public Trajectory(int id, int id_start_address, int id_destination_address, int id_driver, Date pickup_date, int id_client_account, String status) {
-        this.id = id;
+
+  /*  @PersistenceConstructor
+    public Trajectory( int id_start_address, int id_destination_address, int id_driver, Date pickup_date, int id_client_account, String status) {
+
         this.id_start_address = id_start_address;
         this.id_destination_address = id_destination_address;
         this.id_driver = id_driver;
         this.pickup_date = pickup_date;
         this.id_client_account = id_client_account;
         this.status = status;
+    }*/
+
+    public Trajectory() {
+
     }
 
     public int getId() {
@@ -45,13 +70,7 @@ public class Trajectory {
         this.id_destination_address = id_destination_address;
     }
 
-    public int getId_driver() {
-        return id_driver;
-    }
 
-    public void setId_driver(int id_driver) {
-        this.id_driver = id_driver;
-    }
 
     public Date getPickup_date() {
         return pickup_date;

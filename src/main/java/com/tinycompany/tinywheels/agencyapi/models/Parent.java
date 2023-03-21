@@ -1,20 +1,36 @@
 package com.tinycompany.tinywheels.agencyapi.models;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.PersistenceConstructor;
+
+@Entity
+@Table(name="parent")
 public class Parent {
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "id", nullable = false)
    private int id;
    private String first_name;
+   @Column(nullable = false)
    private String last_name;
+   @Column(nullable = false)
    private String phone_number;
+   @Column(nullable = false)
    private String email;
+   @Column(nullable = false)
    private int id_address;
 
-   public Parent(int id, String first_name, String last_name, String phone_number, String email, int id_address) {
-      this.id = id;
+   @PersistenceConstructor
+   public Parent( String first_name, String last_name, String phone_number, String email, int id_address) {
       this.first_name = first_name;
       this.last_name = last_name;
       this.phone_number = phone_number;
       this.email = email;
       this.id_address = id_address;
+   }
+
+   public Parent() {
+
    }
 
    public int getId() {

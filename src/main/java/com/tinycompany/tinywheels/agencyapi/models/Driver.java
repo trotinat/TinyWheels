@@ -1,21 +1,42 @@
 package com.tinycompany.tinywheels.agencyapi.models;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.PersistenceConstructor;
+
+
+@Entity
+@Table(name="driver")
 public class Driver {
+
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "id", nullable = false)
    private int id;
+   @Column(nullable = false)
    private String first_name;
+   @Column(nullable = false)
    private String last_name;
+   @Column(nullable = false)
    private String phone_number;
+   @Column(nullable = false)
    private String email;
+   @Column(nullable = false)
    private String status;
 
-   public Driver(int id, String first_name, String last_name, String phone_number, String email, String status) {
-      this.id = id;
+   public Driver() {
+   }
+
+   @PersistenceConstructor
+   public Driver(String first_name, String last_name, String phone_number, String email, String status) {
       this.first_name = first_name;
       this.last_name = last_name;
       this.phone_number = phone_number;
       this.email = email;
       this.status = status;
    }
+
+
+
 
    public int getId() {
       return id;

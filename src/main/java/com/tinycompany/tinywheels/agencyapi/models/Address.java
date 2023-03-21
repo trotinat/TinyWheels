@@ -1,16 +1,36 @@
 package com.tinycompany.tinywheels.agencyapi.models;
 
+
+import jakarta.persistence.*;
+import org.springframework.data.annotation.PersistenceConstructor;
+
+@Entity
+@Table(name="address")
 public class Address {
+
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   @Column(name = "id", nullable = false)
    private int id;
+
+   @Column(nullable = false)
    private String address_string;
+
+   @Column(nullable = false)
    private double latitude;
+
+   @Column(nullable = false)
    private double longitude;
 
-   public Address(int id, String address_string, double latitude, double longitude) {
-      this.id = id;
+
+   @PersistenceConstructor
+   public Address(String address_string, double latitude, double longitude) {
       this.address_string = address_string;
       this.latitude = latitude;
       this.longitude = longitude;
+   }
+
+   public Address() {
    }
 
    public int getId() {

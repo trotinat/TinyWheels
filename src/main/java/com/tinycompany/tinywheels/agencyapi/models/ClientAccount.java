@@ -1,17 +1,31 @@
 package com.tinycompany.tinywheels.agencyapi.models;
 
+
+import jakarta.persistence.*;
+import org.springframework.data.annotation.PersistenceConstructor;
+
+@Entity
+@Table(name="clientaccount")
 public class ClientAccount {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private int id;
+    @Column(nullable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
+    @Column(nullable = false)
     private String type;
 
-    public ClientAccount(int id, String email, String password, String type) {
-        this.id = id;
+    @PersistenceConstructor
+    public ClientAccount(String email, String password, String type) {
         this.email = email;
         this.password = password;
         this.type = type;
     }
+
+    public ClientAccount(){}
 
     public int getId() {
         return id;
