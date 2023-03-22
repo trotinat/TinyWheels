@@ -8,7 +8,7 @@ import org.springframework.data.annotation.PersistenceConstructor;
 @Table(name="clientaccount")
 public class ClientAccount {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(nullable = false)

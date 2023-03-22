@@ -9,7 +9,7 @@ import org.springframework.data.annotation.PersistenceConstructor;
 public class Address {
 
    @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "id", nullable = false)
    private int id;
 

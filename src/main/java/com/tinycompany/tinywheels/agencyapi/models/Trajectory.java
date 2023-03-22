@@ -13,7 +13,7 @@ import java.util.List;
 public class Trajectory {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     private int id_start_address;
