@@ -10,6 +10,9 @@ public class Vehicule {
    @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "id", nullable = false)
    private int id;
+
+   @Column(name = "image_data")
+   private byte[] imageData;
    @Column(nullable = false)
    private String brand;
    @Column(nullable = false)
@@ -18,17 +21,38 @@ public class Vehicule {
    private int year;
    @Column(nullable = false)
    private String type;
-   @Column(nullable = false)
-   private String status;
 
 
-   @PersistenceConstructor
-   public Vehicule( String brand, String model, int year, String type, String status) {
-      this.brand = brand;
-      this.model = model;
-      this.year = year;
-      this.type = type;
+   public enum Status {
+      Bon_Etat,
+      Mauvaise_Etat,
+
+   }
+   @Enumerated(EnumType.STRING)
+   private Driver.Status status;
+
+   @OneToOne
+   @JoinColumn(name = "driver_id")
+   private Driver driver;
+
+   public byte[] getImageData() {
+      return imageData;
+   }
+
+   public void setImageData(byte[] imageData) {
+      this.imageData = imageData;
+   }
+
+   public void setStatus(Driver.Status status) {
       this.status = status;
+   }
+
+   public Driver getDriver() {
+      return driver;
+   }
+
+   public void setDriver(Driver driver) {
+      this.driver = driver;
    }
 
    public Vehicule() {
@@ -75,11 +99,4 @@ public class Vehicule {
       this.type = type;
    }
 
-   public String getStatus() {
-      return status;
-   }
-
-   public void setStatus(String status) {
-      this.status = status;
-   }
 }

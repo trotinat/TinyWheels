@@ -14,7 +14,13 @@ public class Address {
    private int id;
 
    @Column(nullable = false)
-   private String address_string;
+   private String street;
+   @Column(nullable = false)
+   private String suite;
+   @Column(nullable = false)
+   private String city;
+   @Column(nullable = false)
+   private String zipcode;
 
    @Column(nullable = false)
    private double latitude;
@@ -23,11 +29,36 @@ public class Address {
    private double longitude;
 
 
-   @PersistenceConstructor
-   public Address(String address_string, double latitude, double longitude) {
-      this.address_string = address_string;
-      this.latitude = latitude;
-      this.longitude = longitude;
+   public String getStreet() {
+      return street;
+   }
+
+   public void setStreet(String street) {
+      this.street = street;
+   }
+
+   public String getSuite() {
+      return suite;
+   }
+
+   public void setSuite(String suite) {
+      this.suite = suite;
+   }
+
+   public String getCity() {
+      return city;
+   }
+
+   public void setCity(String city) {
+      this.city = city;
+   }
+
+   public String getZipcode() {
+      return zipcode;
+   }
+
+   public void setZipcode(String zipcode) {
+      this.zipcode = zipcode;
    }
 
    public Address() {
@@ -41,13 +72,6 @@ public class Address {
       this.id = id;
    }
 
-   public String getAddress_string() {
-      return address_string;
-   }
-
-   public void setAddress_string(String address_string) {
-      this.address_string = address_string;
-   }
 
    public double getLatitude() {
       return latitude;

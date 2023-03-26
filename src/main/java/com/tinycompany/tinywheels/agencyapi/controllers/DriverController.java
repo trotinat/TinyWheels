@@ -47,7 +47,7 @@ public class DriverController {
     public ResponseEntity<Driver> updateProduct(@PathVariable Long id, @RequestBody Driver driver) {
         Optional<Driver> existingDriver = driverRepository.findById(id);
         if (existingDriver.isPresent()) {
-            driver.setId(Math.toIntExact(id));
+            driver.setId((long) Math.toIntExact(id));
             Driver savedProduct = driverRepository.save(driver);
             return new ResponseEntity<>(savedProduct, HttpStatus.OK);
         } else {

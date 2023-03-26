@@ -19,10 +19,14 @@ public class Trajectory {
     private int id_start_address;
     @Column(nullable = false)
     private int id_destination_address;
+
+    /*
     @Column(nullable = false)
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "driver_id", referencedColumnName = "id")
     private List<Driver> id_driver;
+
+     */
     @Column(nullable = false)
     private Date pickup_date;
     @Column(nullable = false)
